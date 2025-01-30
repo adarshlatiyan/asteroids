@@ -9,6 +9,7 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shot_cool_down_timer = 0
+        self.score = 0
 
     def draw(self, screen):
         # Remove the circle, only for representation
@@ -59,3 +60,6 @@ class Player(CircleShape):
     def shoot(self):
         shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+        
+    def increase_score(self, amount: int = 1):
+        self.score += amount
